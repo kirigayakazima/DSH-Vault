@@ -1,0 +1,17 @@
+{
+  "deviceId": "my-mobile-agent-device-v1",
+  "dataRoot": "D:\\Backup\\DSH-Vault",
+  "restic": "D:\\CodePackage\\DSH-Vault\\tools\\restic\\bin\\restic_0.19.1_windows_amd64.exe",
+  "restServer": "D:\\CodePackage\\DSH-Vault\\tools\\rest-server\\bin\\rest-server_0.14.0_windows_amd64\\rest-server.exe",
+  "intervalMinutes": 360,
+  "receiverPort": 38443,
+  "powerShell": "powershell.exe",
+  "backupTimeoutMinutes": 120,
+  "phone": {
+    "hosts": [
+      "192.168.1.50"
+    ],
+    "discoverySubnet": "192.168.1.0/24",
+    "port": 22224
+  }
+}

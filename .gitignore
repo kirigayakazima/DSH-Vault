@@ -1,0 +1,33 @@
+# Dependencies & Environments
+node_modules/
+.venv*/
+
+# Runtime Data & Evidence
+runtime/
+cache/
+scratch/
+recovery-checks/
+rescue-readonly*/
+
+# Sensitive Secrets & Credentials
+config.local.json
+secrets/
+*.dpapi
+*.key
+*.pem
+*.pfx
+*.password
+*.htpasswd
+
+# Binary Executables & Archives in tools (use download-tools scripts instead)
+tools/**/*.exe
+tools/**/*.zip
+tools/**/*.bz2
+tools/**/restic-linux-arm64
+tools/restic/bin/
+tools/rest-server/bin/
+
+# Logs & System artifacts
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,29 @@
+{
+  "name": "dsh-vault",
+  "version": "0.1.0",
+  "description": "Zero-hardlink, append-only, mTLS-authenticated encrypted backup and multi-key disaster recovery system for mobile AI agents.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check:safety": "node pc/check-source-safety.mjs",
+    "pretest": "node pc/check-source-safety.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "ai-agent",
+    "backup",
+    "disaster-recovery",
+    "restic",
+    "mtls",
+    "dsh",
+    "proot",
+    "android"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "3.0.3"
+  }
+}
