@@ -1,11 +1,14 @@
 // Bootstrap from an authenticated USB transfer. No production Heart/Mnemon writes.
 import fs from'node:fs';import path from'node:path';import{spawn}from'node:child_process';
 import{privateDecrypt,createDecipheriv,constants,createHash}from'node:crypto';
+const expectedIndex=process.argv.indexOf('--device-id');
+const expectedDeviceId=expectedIndex<0?undefined:process.argv[expectedIndex+1];
+if(!/^[a-zA-Z0-9-]{8,80}$/.test(expectedDeviceId||''))throw Error('EXPECTED_DEVICE_ID_REQUIRED');
 const work='/root/.xiaoman-vault';const envelope=JSON.parse(fs.readFileSync('/sdcard/dshproject/xiaoman-vault-setup/paired-install.sealed.json'));
 const key=privateDecrypt({key:fs.readFileSync(path.join(work,'bootstrap-private.pem')),oaepHash:'sha256',padding:constants.RSA_PKCS1_OAEP_PADDING},Buffer.from(envelope.key,'base64'));
 const decipher=createDecipheriv('aes-256-gcm',key,Buffer.from(envelope.iv,'base64'));decipher.setAuthTag(Buffer.from(envelope.tag,'base64'));
 const payload=JSON.parse(Buffer.concat([decipher.update(Buffer.from(envelope.data,'base64')),decipher.final()]));
-if(!/^xiaoman-redmi-22aa63dc-v1$/.test(payload.config.deviceId))throw Error('PAIRING_IDENTITY_MISMATCH');
+if(payload.config.deviceId!==expectedDeviceId)throw Error('PAIRING_IDENTITY_MISMATCH');
 if(fs.existsSync(path.join(work,'config.phone.json')))throw Error('ALREADY_INSTALLED_REFUSE_OVERWRITE');
 const pkg=path.join(work,'package');fs.mkdirSync(pkg,{recursive:true,mode:0o700});
 for(const entry of payload.files){

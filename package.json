@@ -1,6 +1,6 @@
 {
   "name": "dsh-vault",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-hardlink, append-only, mTLS-authenticated encrypted backup and multi-key disaster recovery system for mobile AI agents.",
   "type": "module",
   "engines": {
@@ -25,5 +25,9 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "3.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirigayakazima/DSH-Vault.git"
   }
 }

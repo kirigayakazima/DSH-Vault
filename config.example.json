@@ -5,7 +5,7 @@
   "restServer": "D:\\CodePackage\\DSH-Vault\\tools\\rest-server\\bin\\rest-server_0.14.0_windows_amd64\\rest-server.exe",
   "intervalMinutes": 360,
   "receiverPort": 38443,
-  "powerShell": "powershell.exe",
+  "powerShell": "pwsh.exe",
   "backupTimeoutMinutes": 120,
   "phone": {
     "hosts": [

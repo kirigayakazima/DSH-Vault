@@ -1,6 +1,6 @@
 import test from'node:test';import assert from'node:assert/strict';import fs from'node:fs';import path from'node:path';import https from'node:https';
 import{spawnSync}from'node:child_process';import{phoneRequest}from'../lib/phone-client.mjs';import{protect}from'../lib/windows-private.mjs';
-const ps='C:/Users/xuaner/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe';
+const ps=process.env.VAULT_POWERSHELL||'pwsh.exe';
 test('DPAPI roundtrip and mutual TLS reject missing client identity',{timeout:30000},async t=>{
  const secret='synthetic-secret-not-production';const sealed=protect(secret);assert.notEqual(sealed,secret);assert.equal(protect(sealed,'unprotect'),secret);
  const result=spawnSync(ps,['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.resolve('pc/certificates.ps1')],{input:JSON.stringify({deviceId:'xiaoman-synthetic-test',subnet:'192.168.1.0/24'}),encoding:'utf8',windowsHide:true});
